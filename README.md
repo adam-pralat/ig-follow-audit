@@ -40,3 +40,7 @@ Next time, just download a fresh export into `exports/`. Each export is saved as
 | `web/` | The dashboard page |
 
 To start over, delete `instagram.db`.
+
+## License
+
+[MIT](LICENSE)
