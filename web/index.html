@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Follow Check</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true"></span>
+      <h1>Follow Check</h1>
+    </div>
+    <div class="controls">
+      <label class="snapshot-picker" id="snapshot-picker" hidden>
+        <span>Export</span>
+        <select id="snapshot"></select>
+      </label>
+      <button id="rescan" class="btn">Rescan exports</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="empty" class="panel empty" hidden>
+      <h2>No exports yet</h2>
+      <ol>
+        <li>In Instagram, open <b>Accounts Center → Your information and permissions → Download your information</b>.</li>
+        <li>Choose <b>Some of your information → Followers and following</b>, format <b>JSON</b>, date range <b>All time</b>.</li>
+        <li>Put the downloaded <code>.zip</code> (or the extracted folder) in this project's <code>exports</code> folder.</li>
+        <li>Click <b>Rescan exports</b>.</li>
+      </ol>
+    </section>
+
+    <div id="dashboard" hidden>
+      <p class="subtitle" id="subtitle"></p>
+      <section class="stats" id="stats"></section>
+
+      <section class="panel" id="changes-panel">
+        <h2 id="changes-title">Since your last export</h2>
+        <div id="changes"></div>
+      </section>
+
+      <div class="grid">
+        <section class="panel lists">
+          <nav class="tabs" id="tabs" role="tablist"></nav>
+          <div class="list-tools">
+            <input id="search" type="search" placeholder="Search usernames" autocomplete="off">
+            <select id="sort">
+              <option value="oldest">Oldest first</option>
+              <option value="newest">Newest first</option>
+              <option value="az">A → Z</option>
+            </select>
+            <label class="check" id="show-ignored-wrap"><input type="checkbox" id="show-ignored"> Show ignored</label>
+          </div>
+          <p class="hint" id="tab-hint"></p>
+          <ul class="people" id="list"></ul>
+        </section>
+
+        <section class="panel">
+          <h2>Fun facts</h2>
+          <div class="facts" id="facts"></div>
+        </section>
+      </div>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Follow activity</h2>
+          <div class="legend"><span class="key followers"></span>They followed you <span class="key following"></span>You followed</div>
+        </div>
+        <div class="chart" id="activity"></div>
+      </section>
+
+      <section class="panel" id="history-panel">
+        <div class="panel-head">
+          <h2>Across your exports</h2>
+          <div class="legend"><span class="key followers"></span>Followers <span class="key following"></span>Following <span class="key mutuals"></span>Mutuals</div>
+        </div>
+        <div class="chart" id="history"></div>
+      </section>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>
